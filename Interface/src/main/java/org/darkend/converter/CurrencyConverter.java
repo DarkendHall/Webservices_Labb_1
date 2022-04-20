@@ -2,9 +2,9 @@ package org.darkend.converter;
 
 public interface CurrencyConverter {
 
-    double to(double sek);
+    double convertTo(double sek);
 
-    double from(double outputCurrency);
+    double convertFrom(double outputCurrency);
 
     String currency();
 }
