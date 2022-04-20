@@ -2,17 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>Webservices_Labb_1</artifactId>
+        <groupId>org.darkend</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.darkend</groupId>
-    <artifactId>Webservices_Labb_1</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>Consumer</module>
-        <module>Interface</module>
-        <module>Provider</module>
-    </modules>
+    <artifactId>Provider</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
