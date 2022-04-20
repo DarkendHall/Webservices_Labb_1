@@ -15,12 +15,12 @@ public class Main {
         System.out.println("From SEK with input of 100");
         serviceLoader.stream()
                 .forEach(c -> System.out.printf("%.2f %s \r\n", c.get()
-                        .to(standardAmount), c.get()
+                        .convertTo(standardAmount), c.get()
                         .currency()));
         System.out.println("To SEK with input of 100");
         serviceLoader.stream()
                 .forEach(c -> System.out.printf("%.2f (from %s) \r\n", c.get()
-                        .from(standardAmount), c.get()
+                        .convertFrom(standardAmount), c.get()
                         .currency()));
     }
 }
