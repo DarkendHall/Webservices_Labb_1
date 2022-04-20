@@ -5,4 +5,6 @@ public interface CurrencyConverter {
     double to(double sek);
 
     double from(double outputCurrency);
+
+    String currency();
 }
