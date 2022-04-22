@@ -12,21 +12,21 @@ public class Main {
 
         double standardAmount = 100;
 
-        serviceLoader.stream()
-                .forEach(c -> c.get()
-                        .getCurrentRates());
+        var loadedServices = serviceLoader.stream()
+                .map(ServiceLoader.Provider::get)
+                .toList();
+
+        loadedServices.forEach(CurrencyConverter::getCurrentRates);
 
         System.out.println("From SEK with input of 100");
 
-        serviceLoader.stream()
-                .forEach(c -> System.out.printf("%.2f %s \r\n", c.get()
-                        .convertTo(standardAmount), getAnnotationValue(c.get())));
+        loadedServices.forEach(
+                c -> System.out.printf("%.2f %s \r\n", c.convertTo(standardAmount), getAnnotationValue(c)));
 
         System.out.println("To SEK with input of 100");
 
-        serviceLoader.stream()
-                .forEach(c -> System.out.printf("%.2f (from %s) \r\n", c.get()
-                        .convertFrom(standardAmount), getAnnotationValue(c.get())));
+        loadedServices.forEach(
+                c -> System.out.printf("%.2f (from %s) \r\n", c.convertFrom(standardAmount), getAnnotationValue(c)));
     }
 
     private static String getAnnotationValue(CurrencyConverter currencyConverter) {
