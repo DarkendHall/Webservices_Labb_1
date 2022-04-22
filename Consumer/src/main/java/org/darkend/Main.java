@@ -1,5 +1,6 @@
 package org.darkend;
 
+import org.darkend.annotation.Currency;
 import org.darkend.converter.CurrencyConverter;
 
 import java.util.ServiceLoader;
@@ -22,6 +23,17 @@ public class Main {
                 .forEach(c -> System.out.printf("%.2f (from %s) \r\n", c.get()
                         .convertFrom(standardAmount), c.get()
                         .currency()));
+    }
+
+    private static String getAnnotationValue(CurrencyConverter currencyConverter) {
+        try {
+            return currencyConverter.getClass()
+                    .getAnnotation(Currency.class)
+                    .value();
+        } catch (NullPointerException e) {
+            throw new NoValueFoundException("Couldn't find a value for this currency, " + currencyConverter.getClass()
+                    .getSimpleName());
+        }
     }
 }
 
