@@ -57,6 +57,7 @@ public class USD implements CurrencyConverter {
     }
 
     @Override
+    @Deprecated
     public String currency() {
         return "USD";
     }

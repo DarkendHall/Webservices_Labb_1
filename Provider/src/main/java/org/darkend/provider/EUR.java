@@ -57,6 +57,7 @@ public class EUR implements CurrencyConverter {
     }
 
     @Override
+    @Deprecated
     public String currency() {
         return "EUR";
     }

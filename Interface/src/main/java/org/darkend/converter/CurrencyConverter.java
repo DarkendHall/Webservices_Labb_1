@@ -6,5 +6,6 @@ public interface CurrencyConverter {
 
     double convertFrom(double outputCurrency);
 
+    @Deprecated
     String currency();
 }
