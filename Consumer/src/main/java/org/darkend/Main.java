@@ -12,6 +12,10 @@ public class Main {
 
         double standardAmount = 100;
 
+        serviceLoader.stream()
+                .forEach(c -> c.get()
+                        .getCurrentRates());
+
         System.out.println("From SEK with input of 100");
 
         serviceLoader.stream()
