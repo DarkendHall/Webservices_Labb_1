@@ -1,5 +1,6 @@
 package org.darkend.provider;
 
+import org.darkend.annotation.Currency;
 import org.darkend.converter.CurrencyConverter;
 
 import java.io.IOException;
@@ -8,6 +9,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+@Currency("USD")
 public class USD implements CurrencyConverter {
 
     private final Double currentRateToUSD;
