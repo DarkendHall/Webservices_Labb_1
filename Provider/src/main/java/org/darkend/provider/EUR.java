@@ -17,11 +17,17 @@ public class EUR implements CurrencyConverter {
 
     @Override
     public double convertTo(double sek) {
+        if (currentRateToEUR == null)
+            throw new IllegalArgumentException("The rate is null, you need to get the rate, with getCurrentRates(), " +
+                    "before using this method!");
         return sek * currentRateToEUR;
     }
 
     @Override
     public double convertFrom(double eur) {
+        if (currentRateFromEUR == null)
+            throw new IllegalArgumentException("The rate is null, you need to get the rate, with getCurrentRates(), " +
+                    "before using this method!");
         return eur * currentRateFromEUR;
     }
 

@@ -17,11 +17,17 @@ public class USD implements CurrencyConverter {
 
     @Override
     public double convertTo(double sek) {
+        if (currentRateToUSD == null)
+            throw new IllegalArgumentException("The rate is null, you need to get the rate, with getCurrentRates(), " +
+                    "before using this method!");
         return sek * currentRateToUSD;
     }
 
     @Override
     public double convertFrom(double usd) {
+        if (currentRateFromUSD == null)
+            throw new IllegalArgumentException("The rate is null, you need to get the rate, with getCurrentRates(), " +
+                    "before using this method!");
         return usd * currentRateFromUSD;
     }
 
