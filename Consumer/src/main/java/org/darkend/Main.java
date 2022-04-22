@@ -8,21 +8,21 @@ import java.util.ServiceLoader;
 public class Main {
 
     public static void main(String[] args) {
-        ServiceLoader<CurrencyConverter> serviceLoader = ServiceLoader.load(
-                CurrencyConverter.class);
+        ServiceLoader<CurrencyConverter> serviceLoader = ServiceLoader.load(CurrencyConverter.class);
 
         double standardAmount = 100;
 
         System.out.println("From SEK with input of 100");
+
         serviceLoader.stream()
                 .forEach(c -> System.out.printf("%.2f %s \r\n", c.get()
-                        .convertTo(standardAmount), c.get()
-                        .currency()));
+                        .convertTo(standardAmount), getAnnotationValue(c.get())));
+
         System.out.println("To SEK with input of 100");
+
         serviceLoader.stream()
                 .forEach(c -> System.out.printf("%.2f (from %s) \r\n", c.get()
-                        .convertFrom(standardAmount), c.get()
-                        .currency()));
+                        .convertFrom(standardAmount), getAnnotationValue(c.get())));
     }
 
     private static String getAnnotationValue(CurrencyConverter currencyConverter) {
