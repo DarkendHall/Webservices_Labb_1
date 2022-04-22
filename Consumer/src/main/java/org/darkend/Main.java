@@ -24,3 +24,9 @@ public class Main {
                         .currency()));
     }
 }
+
+class NoValueFoundException extends RuntimeException {
+    public NoValueFoundException(String message) {
+        super(message);
+    }
+}
