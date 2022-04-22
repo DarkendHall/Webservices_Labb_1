@@ -12,10 +12,26 @@ import java.net.http.HttpResponse;
 @Currency("EUR")
 public class EUR implements CurrencyConverter {
 
-    private final Double currentRateToEUR;
-    private final Double currentRateFromEUR;
+    private Double currentRateToEUR;
+    private Double currentRateFromEUR;
 
-    public EUR() {
+    @Override
+    public double convertTo(double sek) {
+        return sek * currentRateToEUR;
+    }
+
+    @Override
+    public double convertFrom(double eur) {
+        return eur * currentRateFromEUR;
+    }
+
+    @Override
+    @Deprecated
+    public String currency() {
+        return "EUR";
+    }
+
+    public void getCurrentRates() {
         try {
             var client = HttpClient.newHttpClient();
             var request = HttpRequest.newBuilder(URI.create(
@@ -46,21 +62,5 @@ public class EUR implements CurrencyConverter {
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Override
-    public double convertTo(double sek) {
-        return sek * currentRateToEUR;
-    }
-
-    @Override
-    public double convertFrom(double eur) {
-        return eur * currentRateFromEUR;
-    }
-
-    @Override
-    @Deprecated
-    public String currency() {
-        return "EUR";
     }
 }
